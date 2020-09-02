@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
 {
     Rigidbody2D myRigidBody2D;
     Animator myAnimator;
-    Collider2D myCollider2D;
+    CapsuleCollider2D myBodyCollider2D;
+    BoxCollider2D myFeet;
     bool isAlive = true;
     [SerializeField] float runSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
@@ -20,7 +21,8 @@ public class Player : MonoBehaviour
     {
         myRigidBody2D = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        myCollider2D = GetComponent<Collider2D>();
+        myBodyCollider2D = GetComponent<CapsuleCollider2D>();
+        myFeet = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -59,7 +61,7 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        if (!myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        if (!myFeet.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             return; //prevent multijump
         }
@@ -74,7 +76,7 @@ public class Player : MonoBehaviour
 
     private void Climb()
     {
-        if (!myCollider2D.IsTouchingLayers(LayerMask.GetMask("Ladder")))
+        if (!myFeet.IsTouchingLayers(LayerMask.GetMask("Ladder")))
         {
             myAnimator.SetBool("IsClimbing", false);
             myRigidBody2D.gravityScale = 1;
