@@ -17,6 +17,23 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myRigidBody2D.velocity = new Vector2(moveSpeed, 0f);
+        if (IsFacingRight())
+        {
+            myRigidBody2D.velocity = new Vector2(moveSpeed, 0f);
+        }
+        else
+        {
+            myRigidBody2D.velocity = new Vector2(-moveSpeed, 0f);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        transform.localScale = new Vector2(-(Mathf.Sign(myRigidBody2D.velocity.x)),1f);
+    }
+
+    private bool IsFacingRight()
+    {
+        return transform.localScale.x > 0;
     }
 }
