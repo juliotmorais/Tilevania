@@ -47,6 +47,9 @@ TagManager:
   - name: Climbing
     uniqueID: 2707719541
     locked: 0
+  - name: Enemy
+    uniqueID: 48826623
+    locked: 0
   - name: Player
     uniqueID: 3257002377
     locked: 0
