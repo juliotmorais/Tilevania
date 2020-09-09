@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
-
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -103,14 +102,23 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        if (myBodyCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards")))
+        if (myBodyCollider2D.IsTouchingLayers(LayerMask.GetMask("Enemy", "Hazards", "Water")))
         {
             myAnimator.SetTrigger("Dying");
             GetComponent<Rigidbody2D>().velocity = deathKick;
             isAlive = false;
-
+            StartCoroutine(RestartLevel());
 
         }
+    }
+
+
+    IEnumerator RestartLevel()
+    {
+        yield return new WaitForSecondsRealtime(5f);
+
+        var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 
 

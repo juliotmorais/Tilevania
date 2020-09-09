@@ -19,9 +19,9 @@ TagManager:
   - Background
   - Enemy
   - Hazards
-  - 
-  - 
-  - 
+  - Interactables
+  - Water
+  - Pickups
   - 
   - 
   - 
@@ -44,8 +44,14 @@ TagManager:
   - name: Background
     uniqueID: 2422591865
     locked: 0
+  - name: Water
+    uniqueID: 1240889619
+    locked: 0
   - name: Climbing
     uniqueID: 2707719541
+    locked: 0
+  - name: Pickups
+    uniqueID: 3558945377
     locked: 0
   - name: Enemy
     uniqueID: 48826623
@@ -58,4 +64,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 3928757901
+    locked: 0
+  - name: Interactables
+    uniqueID: 1647775599
     locked: 0
